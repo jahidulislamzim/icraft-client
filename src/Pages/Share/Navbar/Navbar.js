@@ -9,7 +9,7 @@ const Navbar = () => {
 
     return (
         <nav className="navbar navbar-expand-lg navbar-light nav-bar-custom">
-            <div className="container-fluid mx-5">
+            <div className="container-fluid ">
                 <Link className="navbar-brand" to="/"><img className="nav-logo" src={logo} alt="" /> iCraft</Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 
@@ -27,12 +27,16 @@ const Navbar = () => {
                         <li className="nav-item mx-3">
                             <Link className="nav-link px-3 active fw-bolder fs-5 " aria-current="page" to="/services">Services</Link>
                         </li>
-                        <li className="nav-item mx-3">
-                            <Link className="nav-link px-3 active fw-bolder fs-5" aria-current="page" to="/dashboard">Dashboard</Link>
-                        </li>
 
 
 
+                        {
+                            user?.email &&
+                            <li className="nav-item mx-3">
+                                <Link className="nav-link px-3 active fw-bolder fs-5" aria-current="page" to="/dashboard">Dashboard</Link>
+                            </li>
+
+                        }
                         {
                             user?.email &&
                             <li className="nav-item mx-3 fw-bolder fs-5 nav-link " >

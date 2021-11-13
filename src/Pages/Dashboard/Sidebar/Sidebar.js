@@ -24,7 +24,7 @@ const Sidebar = () => {
 
 
     useEffect(() => {
-        fetch("http://localhost:5000/Admins")
+        fetch("https://calm-dusk-84501.herokuapp.com/Admins")
             .then((res) => res.json())
             .then((data) => {
                 setAdmins(data)

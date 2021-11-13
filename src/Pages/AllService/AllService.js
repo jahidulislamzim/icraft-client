@@ -7,7 +7,7 @@ const AllService = () => {
 
     return (
         <div className='someService-section container mt-5 mb-5'>
-            <h1>Our Services</h1>
+            <h1>Our Products</h1>
 
             {
                 spinner ?

@@ -34,7 +34,7 @@ const MakeAdmin = () => {
             console.log('empty admin')
         }
         else {
-            axios.post('http://localhost:5000/Admins', adminInfo)
+            axios.post('https://calm-dusk-84501.herokuapp.com/Admins', adminInfo)
                 .then(res => {
                 })
             setNumber('');

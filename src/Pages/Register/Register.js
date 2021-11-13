@@ -7,7 +7,7 @@ const Register = () => {
 
     const location = useLocation();
     const history = useHistory();
-    const redirect_uri = location?.state?.from || '/';
+    const redirect_uri = location?.state?.from || '/dashboard';
 
 
     const [message, setMessage] = useState('')

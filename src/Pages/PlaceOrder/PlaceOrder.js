@@ -18,7 +18,7 @@ const PlaceOrder = () => {
     const redirect_uri = '/services';
 
     useEffect(() => {
-        fetch('http://localhost:5000/AllHandiCraft')
+        fetch('https://calm-dusk-84501.herokuapp.com/AllHandiCraft')
             .then(res => res.json())
             .then(data => setService(data));
     }, []);
@@ -47,7 +47,7 @@ const PlaceOrder = () => {
             setError(`Enter Your Number`);
         }
         else {
-            axios.post('http://localhost:5000/Orders', orderData)
+            axios.post('https://calm-dusk-84501.herokuapp.com/Orders', orderData)
                 .then(res => {
                     // console.log(res);
                 })
@@ -91,7 +91,7 @@ const PlaceOrder = () => {
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicEmail">
-                        <Form.Control onBlur={handleNumber} type="text" placeholder="Enter Your Phone Number" required />
+                        <Form.Control onBlur={handleNumber} type="number" placeholder="Enter Your Phone Number" required />
                     </Form.Group>
 
                     <p className='mt-2 fs-5 text-danger'>{error}</p>

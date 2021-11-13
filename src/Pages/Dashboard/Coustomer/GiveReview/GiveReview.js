@@ -5,7 +5,6 @@ import defaultUser from '../../../Images/userDefault2.png';
 
 const GiveReview = () => {
     const { user } = useAuth();
-    const [name, setName] = useState('');
     const [review, setReview] = useState('');
     const [stars, setStars] = useState('');
     const [error, setError] = useState(``);
@@ -17,10 +16,6 @@ const GiveReview = () => {
     }
 
 
-
-    const handleName = e => {
-        setName(e.target.value);
-    }
 
     const handleReview = e => {
         setReview(e.target.value);
@@ -37,6 +32,7 @@ const GiveReview = () => {
     }
 
     const image = user.photoURL;
+    const name = user.displayName;
 
     const data = { name, review, stars, image };
 
@@ -52,13 +48,12 @@ const GiveReview = () => {
             setError(`Enter Value 1 T0 5`);
         }
         else {
-            axios.post('http://localhost:5000/Reviews', data)
+            axios.post('https://calm-dusk-84501.herokuapp.com/Reviews', data)
                 .then(res => {
                     // console.log(res);
                 })
             setError(``);
             setStars('');
-            setName('');
             setReview('');
         }
     }
@@ -86,7 +81,7 @@ const GiveReview = () => {
 
                 <form onSubmit={handleFromSubmit}>
                     <label className="fs-5 fw-bold text-secondary">Name</label>
-                    <input onBlur={handleName} className="form-control" placeholder="Name is required" required name="name" />
+                    <input className="form-control" placeholder={user.displayName} required name="name" disabled />
                     <br />
                     <label className="fs-5 fw-bold text-secondary">Review</label>
                     <textarea style={{ height: '100px' }} onBlur={handleReview} className="form-control" placeholder="Review is required" required name="review" />

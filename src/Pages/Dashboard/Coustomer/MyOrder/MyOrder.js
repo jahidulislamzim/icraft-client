@@ -3,6 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { Button, Modal } from 'react-bootstrap';
 import useAuth from '../../../../Hoocks/useAuth';
+import doneImage from '../../../Images/donegif.gif';
+import './MyOrder.css';
 
 const MyOrder = () => {
 
@@ -33,7 +35,7 @@ const MyOrder = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/Orders')
+        fetch('https://calm-dusk-84501.herokuapp.com/Orders')
             .then(res => res.json())
             .then(data => {
                 setServices(data)
@@ -44,7 +46,7 @@ const MyOrder = () => {
 
     //Delete Data
     const handleDeleteOrder = () => {
-        const url = `http://localhost:5000/Orders/${orderId}`;
+        const url = `https://calm-dusk-84501.herokuapp.com/Orders/${orderId}`;
         fetch(url, {
             method: 'DELETE'
         })
@@ -83,8 +85,8 @@ const MyOrder = () => {
                         Deleted Successfully
                     </Modal.Title>
                 </Modal.Header>
-                <Modal.Body className='mx-auto'>
-                    <img src='' className='w-50' alt="" srcset="" />
+                <Modal.Body className='mx-auto text-center '>
+                    <img src={doneImage} className='w-50' alt="" srcset="" />
                 </Modal.Body>
                 <Modal.Footer className='mx-auto'>
                     <Button onClick={props.onHide}>Done</Button>
@@ -96,43 +98,70 @@ const MyOrder = () => {
 
 
     return (
-        <main style={{ width: '80%' }}>
+        <main className="px-2 my-5" >
 
-            <div className=" p-5">
-                <h1 className='text-center mb-3'>Manage Service</h1>
+            <div>
+                <h1 className='text-center mb-3'>My Orders</h1>
                 <from>
 
                     {
                         spinner ?
 
 
-
-                            <table className="table table-custom">
-                                <thead>
-                                    <tr className='table-header'>
-
-                                        <th scope="col">Image</th>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Price</th>
-                                        <th scope="col">Status</th>
-                                        <th scope="col">Delete</th>
-                                    </tr>
-                                </thead>
-                                <tbody style={{ verticalAlign: 'middle' }}>
-
-                                    {
-                                        UserOrder.map(service =>
-                                            <tr key={service._id} className="text-secondary table-data">
-                                                <th><img style={{ width: '100px', height: '50px', borderRadius: '10px' }} src={service.img} alt="" /></th>
-                                                <td>{service.name}</td>
-                                                <td>${service.price}</td>
-                                                <td>{service.status}</td>
-                                                <td><button onClick={() => { handleShow(service._id) }} className="btn btn-danger"><FontAwesomeIcon icon={faTrashAlt} />  Delete</button></td>
+                            <div>
+                                <div className='dextop-view'>
+                                    <table className="table table-custom">
+                                        <thead>
+                                            <tr className='table-header'>
+                                                <th scope="col">Image</th>
+                                                <th scope="col">Name</th>
+                                                <th scope="col">Price</th>
+                                                <th scope="col">Status</th>
+                                                <th scope="col">Delete</th>
                                             </tr>
-                                        )
-                                    }
-                                </tbody>
-                            </table>
+                                        </thead>
+                                        <tbody style={{ verticalAlign: 'middle' }}>
+
+                                            {
+                                                UserOrder.map(service =>
+                                                    <tr key={service._id} className="text-secondary table-data ">
+                                                        <th><img style={{ width: '100px', height: '50px', borderRadius: '10px' }} src={service.img} alt="" /></th>
+                                                        <td>{service.name}</td>
+                                                        <td>${service.price}</td>
+                                                        <td>{service.status}</td>
+                                                        <td><button onClick={() => { handleShow(service._id) }} className="btn btn-danger"><FontAwesomeIcon icon={faTrashAlt} />  Delete</button></td>
+                                                    </tr>
+                                                )
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div className='mobile-view'>
+                                    <div class="card-deck">
+                                        {
+                                            UserOrder.map(service =>
+
+                                                <div class="card text-center mt-5">
+                                                    <img class="card-img-top w-75 mx-auto" src={service.img} alt="" />
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">{service.name}</h5>
+                                                        <p class="card-text">Price: ${service.price}</p>
+                                                        <p class="card-text">Status: {service.status}</p>
+                                                        <div className='text-center'>
+                                                            <button onClick={() => { handleShow(service._id) }} className="btn btn-danger"><FontAwesomeIcon icon={faTrashAlt} />  Delete</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            )
+
+                                        }
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+
 
                             :
                             <div className="d-flex justify-content-center align-items-center m-5">
@@ -183,7 +212,7 @@ const MyOrder = () => {
 
 
                 </ from >
-            </div>
+            </div >
 
         </main >
     );

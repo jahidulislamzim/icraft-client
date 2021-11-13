@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Review.css';
-import defaultUser from '../../Images/userDefault.png';
+import defaultUser from '../../Images/userDefault2.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faStarHalfAlt } from '@fortawesome/free-solid-svg-icons';
 import { faStar as star } from '@fortawesome/free-regular-svg-icons'
@@ -8,7 +8,7 @@ const Review = () => {
     const [reviews, setReviews] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5000/Reviews')
+        fetch('https://calm-dusk-84501.herokuapp.com/Reviews')
             .then(res => res.json())
             .then(data => setReviews(data))
     }, [])

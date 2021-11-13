@@ -42,7 +42,7 @@ const AddService = () => {
             console.log('name nai')
         }
         else {
-            axios.post('http://localhost:5000/AllHandiCraft', data)
+            axios.post('https://calm-dusk-84501.herokuapp.com/AllHandiCraft', data)
                 .then(res => {
                     // console.log(res);
                 })
