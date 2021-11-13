@@ -200,7 +200,7 @@ const ManageAllOrder = () => {
         <main>
 
             <div className="mb-5 mt-5">
-                <h1 className='text-center mb-3'>Manage Service</h1>
+                <h1 className='text-center mb-3'>Manage All Orders</h1>
                 <from>
 
                     {
