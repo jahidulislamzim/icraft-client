@@ -1,6 +1,6 @@
 # iCraft An Handi Craft Online Shop
 
-iCraft Live Site [click Here]https://handy-craft.netlify.app/home).
+iCraft Live Site [click Here](https://handy-craft.netlify.app/home).
 
 ## Using Technology 
 1. React Js
