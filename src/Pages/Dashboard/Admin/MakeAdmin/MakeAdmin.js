@@ -43,7 +43,7 @@ const MakeAdmin = () => {
     }
 
     return (
-        <main style={{ width: '80%' }}>
+        <main >
 
             <div className="p-5">
                 <h1 className=' text-center'>Add Admin</h1>
