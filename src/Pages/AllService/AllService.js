@@ -27,7 +27,7 @@ const AllService = () => {
                                                 Add To Cart
                                             </button>
                                         </Link>
-                                    </div>
+                                    </div> 
                                 </div>
                             </div>
                         ))}

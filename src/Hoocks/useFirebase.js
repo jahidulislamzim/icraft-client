@@ -6,7 +6,8 @@ import {
   onAuthStateChanged,
   createUserWithEmailAndPassword,
   updateProfile,
-  signInWithEmailAndPassword
+  signInWithEmailAndPassword,
+  sendEmailVerification
 } from "firebase/auth";
 import { useEffect, useState } from "react";
 import initializeAuthentication from "../Pages/Login/Firebase/firebase.int";
@@ -74,7 +75,11 @@ const useFirebase = () => {
 
 
 
+const emailVerification = () => {
+  return sendEmailVerification(auth.currentUser)
+  
 
+}
 
 
 
@@ -88,7 +93,8 @@ const useFirebase = () => {
     handleEmailRegister,
     handleEmailLogin,
     updateUserProfile,
-    name
+    name,
+    emailVerification
 
   };
 };

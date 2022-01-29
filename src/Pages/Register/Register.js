@@ -12,7 +12,7 @@ const Register = () => {
 
     const [message, setMessage] = useState('')
 
-    const { handleEmailRegister, updateUserProfile, signInWithGoogle } = useAuth();
+    const { handleEmailRegister, updateUserProfile, signInWithGoogle , emailVerification} = useAuth();
 
     const [fullName, setFullName] = useState({});
     const [email, setEmail] = useState({});
@@ -59,9 +59,11 @@ const Register = () => {
     const handleRegister = () => {
         handleEmailRegister(fullName, email, password)
             .then((result) => {
-                updateUserProfile(fullName);
-                history.push(redirect_uri);
-
+                emailVerification()
+                .then(() => { 
+                    updateUserProfile(fullName);
+                    history.push(redirect_uri);
+                  });
             })
             .catch((error) => {
                 setMessage(error.message)
